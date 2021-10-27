@@ -36,7 +36,7 @@ body{
     margin-top: 50px;
     width: 50%;
     align-items: center;
-    left: 25%
+    justify-content: center;
 }
 
 .heading{
