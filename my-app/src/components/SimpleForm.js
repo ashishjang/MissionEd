@@ -11,22 +11,19 @@ export default function SimpleForm(){
       LastName:'',
       Email:'',
       Password:'',
-      City:"",
-      State:"",
-      Zip: "",
+      City:'',
+      Zip: '',
   });
-  let name, value;
+
     const getUserData = (e) =>{
-            name= e.target.name; 
-            value= e.target.value;
         setUser({
-            ...user, [name]:value
+            ...user, [e.target.name]:e.target.value
         })
     }
   
     const postData = async(e) =>{ e.preventDefault();
-      const {FirstName,LastName,Email,Password,Internship,Skills,City,State,Zip} = user;  
-      if(FirstName && LastName && Email && Password && City && State && Zip){ 
+      const {FirstName,LastName,Email,Password,City,Zip} = user;  
+      if(FirstName && LastName && Email && Password && City && Zip){ 
       const res  = await fetch(
            "https://something-unique-aaedb-default-rtdb.firebaseio.com/database.json", 
            { 
@@ -38,7 +35,6 @@ export default function SimpleForm(){
              Email,
              Password,
              City,
-             State,
              Zip
             }),
          }); 
@@ -48,9 +44,8 @@ export default function SimpleForm(){
             LastName:'',
             Email:'',
             Password:'',
-            City:"",
-            State:"",
-            Zip: "",
+            City:'',
+            Zip: '',
               });
         alert("Data Stored Successfully")
         }
@@ -60,7 +55,7 @@ export default function SimpleForm(){
     }
        return(
        <Container>
-    <Card className = 'card'>
+    <Card className="card">
         <div>
            <h1 className = 'heading'><center>Profile Details</center></h1>
            </div>
@@ -73,23 +68,23 @@ export default function SimpleForm(){
   
       <Form.Group as={Col} controlId="formGridLastName">
         <Form.Label>Last Name</Form.Label>
-        <Form.Control type="name" placeholder="Enter Last Name" value = {user.LastName} onChange = {getUserData} />
+        <Form.Control type="name" placeholder="Enter Last Name" name = "LastName" value = {user.LastName} onChange = {getUserData} />
       </Form.Group>
     </Row>
     <Row className="mb-3">
       <Form.Group as={Col} controlId="formGridEmail">
         <Form.Label>E-mail</Form.Label>
-        <Form.Control type="name" placeholder="Enter your e-mail" value = {user.email} onChange = {getUserData}/>
+        <Form.Control type="name" placeholder="Enter your e-mail" name = 'Email' value = {user.Email} onChange = {getUserData}/>
       </Form.Group>
   
       <Form.Group as={Col} controlId="formGridPassword">
         <Form.Label>Password</Form.Label>
-        <Form.Control type="last name" placeholder="Enter your password" value = {user.Password} onChange = {getUserData}/>
+        <Form.Control type="last name" placeholder="Enter your password" name = 'Password' value = {user.Password} onChange = {getUserData}/>
       </Form.Group>
     </Row>
     <Form.Group className="mb-3" controlId="formGridAddress1">
       <Form.Label>Internship</Form.Label>
-        <Form.Select defaultValue="Choose..." value = {user.Internship} onChange = {getUserData}>
+        <Form.Select defaultValue="Choose...">
           <option>Choose...</option>
           <option>Data Science</option>
           <option>Web Development</option>
@@ -98,7 +93,7 @@ export default function SimpleForm(){
   
     <Form.Group className="mb-3" controlId="formGridAddress2">
       <Form.Label>Skills</Form.Label>
-      <Form.Select defaultValue="Choose..." value = {user.Skills} onChange = {getUserData}>
+      <Form.Select defaultValue="Choose...">
           <option>Choose...</option>
           <option>Python</option>
           <option>R</option>
@@ -109,12 +104,12 @@ export default function SimpleForm(){
     <Row className="mb-3">
       <Form.Group as={Col} controlId="formGridCity">
         <Form.Label>City</Form.Label>
-        <Form.Control value = {user.City} onChange = {getUserData}/>
+        <Form.Control name = 'City' value = {user.City} onChange = {getUserData}/>
       </Form.Group>
   
       <Form.Group as={Col} controlId="formGridState">
         <Form.Label>State</Form.Label>
-        <Form.Select defaultValue="Choose..." value = {user.State} onChange = {getUserData}>
+        <Form.Select defaultValue="Choose...">
           <option>Choose...</option>
           <option>Haryana</option>
           <option>Delhi</option>
@@ -124,7 +119,7 @@ export default function SimpleForm(){
   
       <Form.Group as={Col} controlId="formGridZip">
         <Form.Label>Zip</Form.Label>
-        <Form.Control value = {user.Zip} onChange = {getUserData}/>
+        <Form.Control name = 'Zip' value = {user.Zip} onChange = {getUserData}/>
       </Form.Group>
     </Row>
     
