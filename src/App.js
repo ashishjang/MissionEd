@@ -3,7 +3,7 @@ import Recommendation from "./components/Recommedation";
 import SimpleForm from "./components/SimpleForm";
 function App() {
   return (
-    <div><SimpleForm/></div>
+    <div><Recommendation/></div>
   );
 }
 
